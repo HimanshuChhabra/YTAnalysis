@@ -85,27 +85,10 @@ youtube = get_authenticated_service(args)
 
     
 channels = [
-  {"category": "comedy", "id": "UC-lHJZR3Gqxm24_Vd_AJ5Yw", "name": "PewDiePie"},
-  {"category": "comedy", "id": "UCY30JRSgfhYXA6i6xX1erWg", "name": "SMOSH"},
-  {"category": "comedy", "id": "UCY30JRSgfhYXA6i6xX1erWg", "name": "SMOSH"},
-  {"category": "comedy", "id": "UCPDXXXJj9nax0fr0Wfc048g", "name": "CollegeHumor"},
-  {"category": "comedy", "id": "UCPDis9pjXuqyI7RYLJ-TTSA", "name": "FailArmy"},
-  {"category": "comedy", "id": "UC9gFih9rw0zNCK3ZtoKQQyA", "name": "JennaMarbles"},
-  {"category": "tv", "id": "UC8-Th83bH_thdKZDJCrn88g", "name": "Fallon"},
-  {"category": "tv", "id": "UCi7GJNg51C3jgmYTUwqoUXA", "name": "Conan"},
-  {"category": "tv", "id": "UCJ0uqCI0Vqr2Rrt1HseGirg", "name": "Corden"},
-  {"category": "tv", "id": "UCa6vGFO9ty8v5KZJXQxdhaw", "name": "Kimmel"},
-  {"category": "tv", "id": "UCp0hYYBW6IMayGgR-WeoCvQ", "name": "Ellen"},
-  {"category": "science", "id": "UCC552Sd-3nyi_tk2BudLUzA", "name": "AsapSCIENCE"},
-  {"category": "science", "id": "UCZYTClx2T1of7BRZ86-8fow", "name": "SciShow"},
-  {"category": "science", "id": "UCoxcjq-8xIDTYp3uz647V5A", "name": "Numberphile"},
-  {"category": "science", "id": "UCvJiYiBUbw4tmpRSZT2r1Hw", "name": "ScienceChannel"},
-  {"category": "science", "id": "UCHnyfMqiRRG1u-2MsSQLbXA", "name": "Veritasium"},
-  {"category": "news", "id": "UC1yBKRuGpC1tSM73A0ZjYjQ", "name": "TYT"},
-  {"category": "news", "id": "UCBi2mrWuNuyYy4gbM6fU18Q", "name": "ABCNews"},
-  {"category": "news", "id": "UCupvZG-5ko_eiXAupbDfxWw", "name": "CNN"},
-  {"category": "news", "id": "UCvsye7V9psc-APX6wV1twLg", "name": "AlexJones"},
-  {"category": "news", "id": "UCLXo7UDZvByw2ixzpQCufnA", "name": "Vox"}
+  {"category": "Tech", "id": "UCsTcErHg8oDvUnTzoqsYeNw", "name": "UnboxTherapy"},
+  {"category": "Tech", "id": "UCXuqSBlHAE6Xw-yeJA0Tunw", "name": "LinusTechTips"},
+  {"category": "Tech", "id": "UCddiUEpeqJcYeBxX1IVBKvQ", "name": "TheVerge"},
+  {"category": "Tech", "id": "UCBJycsmduvYEL83R_U4JriQ", "name": "MarquesBrownlee"}
 ]
 
 for channel in channels:
