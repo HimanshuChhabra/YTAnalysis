@@ -92,11 +92,6 @@ channels = [
   {"category": "comedy", "id": "UC-lHJZR3Gqxm24_Vd_AJ5Yw", "name": "PewDiePie"},
   {"category": "comedy", "id": "UCY30JRSgfhYXA6i6xX1erWg", "name": "SMOSH"},
 
-  {"category": "Tech", "id": "UCsTcErHg8oDvUnTzoqsYeNw", "name": "UnboxTherapy"},
-  {"category": "Tech", "id": "UCXuqSBlHAE6Xw-yeJA0Tunw", "name": "LinusTechTips"},
-  {"category": "Tech", "id": "UCddiUEpeqJcYeBxX1IVBKvQ", "name": "TheVerge"},
-  {"category": "Tech", "id": "UCBJycsmduvYEL83R_U4JriQ", "name": "MarquesBrownlee"}
-
 ]
 
 for channel in channels:
