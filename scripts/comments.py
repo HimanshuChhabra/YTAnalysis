@@ -85,11 +85,18 @@ youtube = get_authenticated_service(args)
 #{"category": "news", "id": "UCLXo7UDZvByw2ixzpQCufnA", "name": "Vox News"}, 
 
 channels = [
+
   {"category": "comedy", "id": "UCUsN5ZwHx2kILm84-jPDeXw", "name": "comedy central"},
   {"category": "comedy", "id": "UCPDXXXJj9nax0fr0Wfc048g", "name": "CollegeHumor"},
   {"category": "comedy", "id": "UC0ntBMtAa1ecIP3Yu5lktCg", "name": "Just for laugh gags"},
   {"category": "comedy", "id": "UC-lHJZR3Gqxm24_Vd_AJ5Yw", "name": "PewDiePie"},
   {"category": "comedy", "id": "UCY30JRSgfhYXA6i6xX1erWg", "name": "SMOSH"},
+
+  {"category": "Tech", "id": "UCsTcErHg8oDvUnTzoqsYeNw", "name": "UnboxTherapy"},
+  {"category": "Tech", "id": "UCXuqSBlHAE6Xw-yeJA0Tunw", "name": "LinusTechTips"},
+  {"category": "Tech", "id": "UCddiUEpeqJcYeBxX1IVBKvQ", "name": "TheVerge"},
+  {"category": "Tech", "id": "UCBJycsmduvYEL83R_U4JriQ", "name": "MarquesBrownlee"}
+
 ]
 
 for channel in channels:
