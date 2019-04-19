@@ -31,7 +31,15 @@ def write_comments(comments):
         commentWriter = csv.writer(commentFile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
         
         for comment in comments:
-            label = ""
+            res = TextBlob(comment)
+            score = res.sentiment.polarity
+            
+            label = "neutral"
+            if score >= -1 and score <= -0.25:
+                label = "negative"
+            elif score > 0.25:
+                label = "positive"
+            
             l = [comment,label]
             print(l)
             commentWriter.writerow(l)
