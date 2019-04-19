@@ -54,7 +54,7 @@ def get_videos(youtube, channelId, maxResults, pageToken):
     channelId=channelId,
     pageToken=pageToken,
     order="viewCount",
-    publishedAfter="2016-01-01T00:00:00Z",
+    publishedAfter="2015-01-01T00:00:00Z",
     publishedBefore="2018-01-01T00:00:00Z",
     safeSearch="none",
     type="video",
@@ -76,19 +76,22 @@ def get_comments(youtube, videoId, maxResults, pageToken):
 def clean_str(string):
     string = string.encode("ascii", "ignore");
     string = string.decode('utf-8')
-    print(type(string))
     return re.sub(r"\s+", " ", string).strip()
 
 args = argparser.parse_args()
 youtube = get_authenticated_service(args)
 
 
-    
+#{"category": "news", "id": "UCLXo7UDZvByw2ixzpQCufnA", "name": "Vox News"}, 
+
 channels = [
-  {"category": "Tech", "id": "UCsTcErHg8oDvUnTzoqsYeNw", "name": "UnboxTherapy"},
-  {"category": "Tech", "id": "UCXuqSBlHAE6Xw-yeJA0Tunw", "name": "LinusTechTips"},
-  {"category": "Tech", "id": "UCddiUEpeqJcYeBxX1IVBKvQ", "name": "TheVerge"},
-  {"category": "Tech", "id": "UCBJycsmduvYEL83R_U4JriQ", "name": "MarquesBrownlee"}
+
+  {"category": "comedy", "id": "UCUsN5ZwHx2kILm84-jPDeXw", "name": "comedy central"},
+  {"category": "comedy", "id": "UCPDXXXJj9nax0fr0Wfc048g", "name": "CollegeHumor"},
+  {"category": "comedy", "id": "UC0ntBMtAa1ecIP3Yu5lktCg", "name": "Just for laugh gags"},
+  {"category": "comedy", "id": "UC-lHJZR3Gqxm24_Vd_AJ5Yw", "name": "PewDiePie"},
+  {"category": "comedy", "id": "UCY30JRSgfhYXA6i6xX1erWg", "name": "SMOSH"},
+
 ]
 
 for channel in channels:
@@ -110,11 +113,15 @@ for channel in channels:
         
         for _ in range(3):
             if pageToken != False:
-                resultComments = get_comments(youtube, videoId, 100, pageToken) # find out 250
-                comments.extend(resultComments.get("items", []))
-                pageToken = resultComments.get("nextPageToken", False)
+                try:
+                    resultComments = get_comments(youtube, videoId, 100, pageToken) # find out 250
+                    comments.extend(resultComments.get("items", []))
+                    pageToken = resultComments.get("nextPageToken", False)
+                except:
+                    print("Locked comments")
+                    continue      
             
-    with open("comments.csv", "a+") as commentFile:
+    with open("comments_comedy.csv", "a+") as commentFile:
         commentWriter = csv.writer(commentFile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
         commentWriter.writerows([["channelId","videoId", "commentId", "author", "text", "replies", "likes", "publishedAt"]])
         for comment in comments:
@@ -131,3 +138,16 @@ for channel in channels:
                                       clc["publishedAt"].encode("ascii", "ignore")
       ]])
             
+
+'''
+        {"category": "comedy", "id": "UCUsN5ZwHx2kILm84-jPDeXw", "name": "comedy central"},
+  {"category": "comedy", "id": "UCPDXXXJj9nax0fr0Wfc048g", "name": "CollegeHumor"},
+  {"category": "comedy", "id": "UC0ntBMtAa1ecIP3Yu5lktCg", "name": "Just for laugh gags"},
+  {"category": "comedy", "id": "UCaAZ2O-1wvipTqdbFv2cJJQ", "name": "Just Kidding Pranks"},
+  
+  
+    {"category": "news", "id": "UCupvZG-5ko_eiXAupbDfxWw", "name": "CNN"},
+  {"category": "news", "id": "UCXIJgqnII2ZOINSWNOGFThA", "name": "Fox News"},
+  {"category": "news", "id": "UCBi2mrWuNuyYy4gbM6fU18Q", "name": "ABC News"},
+  {"category": "news", "id": "UCwqusr8YDwM-3mEYTDeJHzw", "name": "Vox News"},
+'''
