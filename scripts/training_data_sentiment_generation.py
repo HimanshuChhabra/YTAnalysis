@@ -37,9 +37,9 @@ def text_analysis(comments):
             score = res.sentiment.polarity
 
             label = "neutral"
-            if score >= -1 and score <= -0.34:
+            if score >= -1 and score <= -0.25:
                 label = "negative"
-            elif score > 0.34:
+            elif score > 0.25:
                 label = "positive"
 
             l = [comment,label]
