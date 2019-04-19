@@ -20,9 +20,8 @@ def read_comments(filepath, category):
                 continue
             temp = re.sub(r'[^\w\s\*]','',row[4], flags=re.MULTILINE)
             if len(temp.strip()) > 0:
-                comments.append(temp)
+                comments.append((temp,category))
             i+=1
-
 
     return comments
 
@@ -30,7 +29,7 @@ def write_comments(comments):
     with open("csv files/test_data.csv", "a+") as commentFile:
         commentWriter = csv.writer(commentFile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
         
-        for comment in comments:
+        for (comment,category) in comments:
             res = TextBlob(comment)
             score = res.sentiment.polarity
             
@@ -40,7 +39,7 @@ def write_comments(comments):
             elif score > 0.25:
                 label = "positive"
             
-            l = [comment,label]
+            l = [comment,label,category]
             print(l)
             commentWriter.writerow(l)
 
@@ -48,8 +47,6 @@ def write_comments(comments):
 if __name__ == "__main__":
     
     list_input = []
-
-
     
     for category,filename in files.items():
         list_input += read_comments(csv_filepath+filename, category)
@@ -58,7 +55,7 @@ if __name__ == "__main__":
 
     with open("csv files/test_data.csv", "w") as commentFile:
         commentWriter = csv.writer(commentFile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-        commentWriter.writerow(["Comment","Label"])
+        commentWriter.writerow(["Comment","Label","Category"])
 
     write_comments(list_input)
 
