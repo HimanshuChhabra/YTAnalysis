@@ -16,8 +16,6 @@ def read_comments(filepath, category):
         i=0
         for row in commentReader:
             if (i<20000):
-                continue
-            if i == 0:
                 i+=1
                 continue
             temp = re.sub(r'[^\w\s\*]','',row[4], flags=re.MULTILINE)
@@ -26,7 +24,7 @@ def read_comments(filepath, category):
             i+=1
 
 
-return comments
+    return comments
 
 def write_comments(comments):
     with open("csv files/test_data.csv", "a+") as commentFile:
