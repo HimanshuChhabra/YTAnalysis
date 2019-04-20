@@ -8,9 +8,9 @@ import csv
 # get path to script's directory
 currdir = path.dirname(__file__)
 
-def readCSV():
+def readCSV(filename):
     merged =""
-    with open('comments_TV.csv') as csvfile:
+    with open(filename) as csvfile:
         rows = csv.reader(csvfile, delimiter=',')
         for row in rows:
             string = row[4].lower()
@@ -19,16 +19,10 @@ def readCSV():
     return merged.strip()   
 
 
-def create_wordcloud(text):
-    # create numpy araay for wordcloud mask image
+def create_wordcloud(text,filename,stopwords):
+    # create numpy array for wordcloud mask image
     mask = np.array(Image.open(path.join(currdir, "cloud.png")))
-
-    # create set of stopwords
-    stopwords = set(STOPWORDS)
-    stopwords.add("video")
-    stopwords.add("youtube")
-    stopwords.add("one")
-    stopwords.add("oregon")
+    
 
     # create wordcloud object
     wc = WordCloud(background_color="white",
@@ -40,14 +34,25 @@ def create_wordcloud(text):
     wc.generate(text)
 
     # save wordcloud
-    wc.to_file(path.join(currdir, "wc.png"))
+    wc.to_file(path.join(currdir, filename))
+    print(filename + " generated")
 
-# generate wordcloud
-text = readCSV()
-create_wordcloud(text)
-
-
-
+if __name__== '__main__':    
+    # create set of stopwords
+    stopwords = set(STOPWORDS)
+    
+    file = open("stopwords_list.txt","r+")
+    other_stopwords =  file.read().split(",")
+    
+    for word in other_stopwords:
+        stopwords.add(word)
+    
+    filenames = ["../../csv_files/comments_comedy.csv","../../csv_files/comments_tech.csv","../../csv_files/comments_news.csv","../../csv_files/comments_TV.csv"]
+    targetnames = ["comedy_wc.png","tech_wc.png","news_wc.png","tv_wc.png"]
+    
+    for i,filename in enumerate(filenames):
+        text = readCSV(filename)
+        create_wordcloud(text,targetnames[i],stopwords);
 
 
 
