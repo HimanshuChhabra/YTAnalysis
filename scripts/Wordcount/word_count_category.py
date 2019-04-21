@@ -8,7 +8,7 @@ from wordcloud import STOPWORDS
 
 stopwords = set(STOPWORDS)
 csv_filepath = "../../csv_files/"
-files = {"Tech": "comments_tech.csv","Comedy": "comments_comedy_good.csv","News":"comments_news.csv","TV":"comments_TV.csv"}
+files = {"Tech": "comments_tech.csv","Comedy": "comments_comedy.csv","News":"comments_news.csv","TV":"comments_TV.csv"}
 average_words_category = []
 
 def count_words_with_file(filepath, category):
@@ -42,10 +42,22 @@ def plot_graph():
         xLabels.append(val[0])
         counter += 1
 
-    plt.bar(xCoordinates, yCoordinates, tick_label = xLabels, width = 0.8, color = ['red', 'green', 'blue','yellow'])
+    fig, ax = plt.subplots()
 
-    plt.xlabel('Category')
-    plt.ylabel('Words / Comment')
+    rects = ax.bar(xCoordinates, yCoordinates, 0.75, color=['blue','green','red','yellow'])
+
+    for rect in rects:
+        height = rect.get_height()
+        ax.text(rect.get_x() + rect.get_width()/2., 1.0*height,
+            '%d' % int(height),
+            ha='center', va='bottom')
+        
+        
+    ax.set_title("Words Per Comment")
+    ax.set_xticks(xCoordinates)
+    ax.set_xticklabels(xLabels)
+    ax.set_xlabel('Category')
+    ax.set_ylabel('Words / Comment')
     plt.show()
 
 
