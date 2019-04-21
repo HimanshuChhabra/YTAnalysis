@@ -3,7 +3,7 @@ import csv
 import math
 import matplotlib.pyplot as plt
 
-filepath = "../data/test_data.csv"
+filepath = "../prediction.csv"
 
 answerPercentages = {}
 
@@ -59,11 +59,11 @@ if __name__ == "__main__":
                 i=1
                 continue
         
-            (comment,label,category) = (row[0],row[1],row[2])
+            (comment,label,category,prediction) = (row[0],row[1],row[2],row[3])
 
-            if label == "positive":
+            if prediction == "positive":
                 stats[category]["positive"] += 1
-            elif label == "negative":
+            elif prediction == "negative":
                 stats[category]["negative"] += 1
             else:
                 stats[category]["neutral"] += 1
