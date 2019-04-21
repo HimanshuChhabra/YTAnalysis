@@ -7,7 +7,7 @@ from wordcloud import STOPWORDS
 
 
 stopwords = set(STOPWORDS)
-csv_filepath = "csv files/"
+csv_filepath = "../../csv_files/"
 files = {"Tech": "comments_tech.csv","Comedy": "comments_comedy_good.csv","News":"comments_news.csv","TV":"comments_TV.csv"}
 average_words_category = []
 
