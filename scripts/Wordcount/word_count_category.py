@@ -58,7 +58,8 @@ def plot_graph():
     ax.set_xticklabels(xLabels)
     ax.set_xlabel('Category')
     ax.set_ylabel('Words / Comment')
-    plt.show()
+
+    plt.save_fig('wordspercomment.png')
 
 
 
