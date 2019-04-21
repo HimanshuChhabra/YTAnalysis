@@ -59,7 +59,7 @@ def plot_graph():
     ax.set_xlabel('Category')
     ax.set_ylabel('Words / Comment')
 
-    plt.save_fig('wordspercomment.png')
+    plt.savefig('wordspercomment.png')
 
 
 
