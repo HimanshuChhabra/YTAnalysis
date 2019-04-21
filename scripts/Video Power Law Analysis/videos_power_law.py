@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     # read data from csv
-    temp_csv_2 = pd.read_csv("../../csv files/video_data.csv",sep=",")
+    temp_csv_2 = pd.read_csv("../../csv_files/video_data.csv",sep=",")
     video_len_draw = list(temp_csv_2["Length"])
     video_like_draw = list(temp_csv_2["Like"])
     video_view_draw = list(temp_csv_2["View"])
